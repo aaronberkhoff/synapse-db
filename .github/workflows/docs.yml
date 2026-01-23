@@ -1,0 +1,111 @@
+name: Documentation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  MDBOOK_VERSION: '0.4.40'
+
+jobs:
+  build-docs:
+    name: Build Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Needed for git-cliff
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo registry
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/registry
+          key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache cargo index
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/git
+          key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Cache mdBook
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/bin/mdbook
+          key: ${{ runner.os }}-mdbook-${{ env.MDBOOK_VERSION }}
+
+      - name: Install mdBook
+        run: |
+          if ! command -v mdbook &> /dev/null || [ "$(mdbook --version | awk '{print $2}')" != "v${{ env.MDBOOK_VERSION }}" ]; then
+            cargo install mdbook --version ${{ env.MDBOOK_VERSION }} --locked
+          fi
+
+      - name: Install git-cliff
+        run: cargo install git-cliff --locked
+
+      - name: Generate changelog
+        run: |
+          git-cliff --output CHANGELOG.md
+          cp CHANGELOG.md book/changelog.md
+
+      - name: Build mdBook
+        run: mdbook build
+
+      - name: Build Rust API documentation
+        run: cargo doc --no-deps --all-features
+
+      - name: Copy API docs to book
+        run: |
+          mkdir -p target/book/api-docs
+          cp -r target/doc/* target/book/api-docs/
+
+      - name: Create index redirect in API docs
+        run: |
+          cat > target/book/api-docs/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <title>Redirecting to API Documentation</title>
+            <meta http-equiv="refresh" content="0; URL=synapse_db/index.html">
+          </head>
+          <body>
+            <p>Redirecting to <a href="synapse_db/index.html">API documentation</a>...</p>
+          </body>
+          </html>
+          EOF
+
+      - name: Upload documentation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation
+          path: target/book/
+          retention-days: 7
+
+  deploy-docs:
+    name: Deploy to GitHub Pages
+    needs: build-docs
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download documentation artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: documentation
+          path: ./book
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book
+          force_orphan: true

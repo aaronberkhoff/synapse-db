@@ -1,0 +1,70 @@
+name: Pull Request Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  pr-checks:
+    name: PR Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Check PR title
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            style
+            refactor
+            perf
+            test
+            build
+            ci
+            chore
+          requireScope: false
+
+      - name: Check for TODO comments
+        run: |
+          if git diff origin/${{ github.base_ref }}...HEAD | grep -E "^\+.*TODO|^\+.*FIXME"; then
+            echo "::warning::New TODO or FIXME comments found. Consider creating issues for them."
+          fi
+
+      - name: Check file sizes
+        run: |
+          large_files=$(find . -type f -size +1M -not -path "*/target/*" -not -path "*/.git/*")
+          if [ -n "$large_files" ]; then
+            echo "::warning::Large files detected (>1MB):"
+            echo "$large_files"
+          fi
+
+      - name: Detect breaking changes
+        run: |
+          # Check if Cargo.toml major version changed
+          if git diff origin/${{ github.base_ref }} HEAD -- Cargo.toml | grep -E "^\+version.*[1-9][0-9]*\.0\.0"; then
+            echo "::notice::Potential breaking changes detected (major version bump)"
+          fi
+
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: moderate

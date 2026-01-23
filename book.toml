@@ -1,0 +1,54 @@
+[book]
+title = "Synapse DB Documentation"
+authors = ["ajber"]
+language = "en"
+multilingual = false
+src = "book"
+description = "A high-performance database implementation written in Rust"
+
+[build]
+build-dir = "target/book"
+create-missing = true
+
+[preprocessor.links]
+
+[preprocessor.index]
+
+[output.html]
+default-theme = "navy"
+preferred-dark-theme = "navy"
+smart-punctuation = true
+mathjax-support = false
+copy-fonts = true
+no-section-label = false
+git-repository-url = "https://github.com/ajber/synapse-db"
+git-repository-icon = "fa-github"
+edit-url-template = "https://github.com/ajber/synapse-db/edit/main/book/{path}"
+site-url = "/synapse-db/"
+
+[output.html.fold]
+enable = true
+level = 1
+
+[output.html.playground]
+editable = true
+copyable = true
+copy-js = true
+line-numbers = true
+runnable = true
+
+[output.html.search]
+enable = true
+limit-results = 30
+teaser-word-count = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 1
+boost-paragraph = 1
+expand = true
+heading-split-level = 3
+
+[output.html.redirect]
+
+[output.html.print]
+enable = true

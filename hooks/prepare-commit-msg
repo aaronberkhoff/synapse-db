@@ -1,0 +1,41 @@
+#!/bin/bash
+# Prepare commit message hook for Synapse DB
+# Provides helpful template for commit messages
+
+commit_msg_file=$1
+commit_source=$2
+
+# Only add template if this is a new commit (not amend, merge, etc.)
+if [ -z "$commit_source" ]; then
+    # Check if the file is empty or only has comments
+    if ! grep -qvE '^#' "$commit_msg_file" 2>/dev/null || [ ! -s "$commit_msg_file" ]; then
+        cat > "$commit_msg_file" << 'EOF'
+# <type>[optional scope]: <description>
+#
+# [optional body]
+#
+# [optional footer(s)]
+#
+# Types:
+#   feat:     New feature
+#   fix:      Bug fix
+#   docs:     Documentation only
+#   style:    Code style (formatting, no code change)
+#   refactor: Code refactoring
+#   perf:     Performance improvement
+#   test:     Add or update tests
+#   build:    Build system changes
+#   ci:       CI/CD changes
+#   chore:    Maintenance tasks
+#
+# Examples:
+#   feat: add user authentication
+#   fix: resolve memory leak in query engine
+#   docs(readme): update installation guide
+#   perf(storage): optimize disk I/O operations
+#
+# The first line should be ≤72 characters
+# Body and footer are optional but recommended for complex changes
+EOF
+    fi
+fi
