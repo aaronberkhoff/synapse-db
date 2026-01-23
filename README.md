@@ -1,8 +1,8 @@
 # Synapse DB
 
-[![CI](https://github.com/ajber/synapse-db/workflows/CI/badge.svg)](https://github.com/ajber/synapse-db/actions/workflows/ci.yml)
-[![Release](https://github.com/ajber/synapse-db/workflows/Release/badge.svg)](https://github.com/ajber/synapse-db/actions/workflows/release.yml)
-[![codecov](https://codecov.io/gh/ajber/synapse-db/branch/main/graph/badge.svg)](https://codecov.io/gh/ajber/synapse-db)
+[![CI](https://github.com/aaronberkhoff/synapse-db/workflows/CI/badge.svg)](https://github.com/aaronberkhoff/synapse-db/actions/workflows/ci.yml)
+[![Release](https://github.com/aaronberkhoff/synapse-db/workflows/Release/badge.svg)](https://github.com/aaronberkhoff/synapse-db/actions/workflows/release.yml)
+[![codecov](https://codecov.io/gh/aaronberkhoff/synapse-db/branch/main/graph/badge.svg)](https://codecov.io/gh/aaronberkhoff/synapse-db)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A high-performance database implementation written in Rust.
@@ -20,7 +20,7 @@ A high-performance database implementation written in Rust.
 Run the automated setup script to install everything you need:
 
 ```bash
-git clone https://github.com/ajber/synapse-db.git
+git clone https://github.com/aaronberkhoff/synapse-db.git
 cd synapse-db
 ./scripts/setup.sh
 ```
@@ -97,7 +97,7 @@ See `make help` for all available commands.
 
 ## Documentation
 
-Comprehensive documentation is available at [https://ajber.github.io/synapse-db](https://ajber.github.io/synapse-db)
+Comprehensive documentation is available at [https://aaronberkhoff.github.io/synapse-db](https://aaronberkhoff.github.io/synapse-db)
 
 ### Building Documentation Locally
 

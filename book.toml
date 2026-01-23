@@ -1,6 +1,6 @@
 [book]
 title = "Synapse DB Documentation"
-authors = ["ajber"]
+authors = ["aaronberkhoff"]
 language = "en"
 multilingual = false
 src = "book"
@@ -21,9 +21,9 @@ smart-punctuation = true
 mathjax-support = false
 copy-fonts = true
 no-section-label = false
-git-repository-url = "https://github.com/ajber/synapse-db"
+git-repository-url = "https://github.com/aaronberkhoff/synapse-db"
 git-repository-icon = "fa-github"
-edit-url-template = "https://github.com/ajber/synapse-db/edit/main/book/{path}"
+edit-url-template = "https://github.com/aaronberkhoff/synapse-db/edit/main/book/{path}"
 site-url = "/synapse-db/"
 
 [output.html.fold]

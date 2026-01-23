@@ -106,7 +106,7 @@ This directory contains automation scripts for Synapse DB development.
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/ajber/synapse-db.git
+git clone https://github.com/aaronberkhoff/synapse-db.git
 cd synapse-db
 
 # 2. Run setup (only needed once)

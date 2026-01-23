@@ -210,9 +210,9 @@ Configure these in GitHub Settings → Secrets:
 Add these to your README:
 
 ```markdown
-[![CI](https://github.com/ajber/synapse-db/workflows/CI/badge.svg)](https://github.com/ajber/synapse-db/actions/workflows/ci.yml)
-[![Release](https://github.com/ajber/synapse-db/workflows/Release/badge.svg)](https://github.com/ajber/synapse-db/actions/workflows/release.yml)
-[![codecov](https://codecov.io/gh/ajber/synapse-db/branch/main/graph/badge.svg)](https://codecov.io/gh/ajber/synapse-db)
+[![CI](https://github.com/aaronberkhoff/synapse-db/workflows/CI/badge.svg)](https://github.com/aaronberkhoff/synapse-db/actions/workflows/ci.yml)
+[![Release](https://github.com/aaronberkhoff/synapse-db/workflows/Release/badge.svg)](https://github.com/aaronberkhoff/synapse-db/actions/workflows/release.yml)
+[![codecov](https://codecov.io/gh/aaronberkhoff/synapse-db/branch/main/graph/badge.svg)](https://codecov.io/gh/aaronberkhoff/synapse-db)
 ```
 
 ---

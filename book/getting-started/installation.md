@@ -60,7 +60,7 @@ Cargo will automatically download and compile Synapse DB and its dependencies.
 Clone the repository and build:
 
 ```bash
-git clone https://github.com/ajber/synapse-db.git
+git clone https://github.com/aaronberkhoff/synapse-db.git
 cd synapse-db
 cargo build --release
 ```
@@ -69,13 +69,13 @@ The compiled binary will be at `target/release/synapse-db`.
 
 ### Option 3: Pre-built Binaries
 
-Download pre-built binaries from the [releases page](https://github.com/ajber/synapse-db/releases):
+Download pre-built binaries from the [releases page](https://github.com/aaronberkhoff/synapse-db/releases):
 
 #### Linux
 
 ```bash
 # Download and extract
-wget https://github.com/ajber/synapse-db/releases/latest/download/synapse-db-linux-amd64.tar.gz
+wget https://github.com/aaronberkhoff/synapse-db/releases/latest/download/synapse-db-linux-amd64.tar.gz
 tar xzf synapse-db-linux-amd64.tar.gz
 
 # Move to PATH
@@ -89,10 +89,10 @@ synapse-db --version
 
 ```bash
 # Intel Macs
-curl -L https://github.com/ajber/synapse-db/releases/latest/download/synapse-db-macos-amd64.tar.gz -o synapse-db.tar.gz
+curl -L https://github.com/aaronberkhoff/synapse-db/releases/latest/download/synapse-db-macos-amd64.tar.gz -o synapse-db.tar.gz
 
 # Apple Silicon (M1/M2)
-curl -L https://github.com/ajber/synapse-db/releases/latest/download/synapse-db-macos-arm64.tar.gz -o synapse-db.tar.gz
+curl -L https://github.com/aaronberkhoff/synapse-db/releases/latest/download/synapse-db-macos-arm64.tar.gz -o synapse-db.tar.gz
 
 # Extract and install
 tar xzf synapse-db.tar.gz
@@ -104,7 +104,7 @@ synapse-db --version
 
 #### Windows
 
-1. Download `synapse-db-windows-amd64.zip` from the [releases page](https://github.com/ajber/synapse-db/releases)
+1. Download `synapse-db-windows-amd64.zip` from the [releases page](https://github.com/aaronberkhoff/synapse-db/releases)
 2. Extract the archive
 3. Add the directory to your PATH
 4. Open a new terminal and run `synapse-db --version`
@@ -235,5 +235,5 @@ For contributing to Synapse DB, see the [Contributing Guide](../development/cont
 ## Getting Help
 
 - Check the [FAQ](../faq.md)
-- Search [existing issues](https://github.com/ajber/synapse-db/issues)
-- Open a [new issue](https://github.com/ajber/synapse-db/issues/new)
+- Search [existing issues](https://github.com/aaronberkhoff/synapse-db/issues)
+- Open a [new issue](https://github.com/aaronberkhoff/synapse-db/issues/new)

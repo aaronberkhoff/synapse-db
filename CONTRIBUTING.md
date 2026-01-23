@@ -9,7 +9,7 @@ Thank you for your interest in contributing to Synapse DB! This document provide
 Run the automated setup script:
 
 ```bash
-git clone https://github.com/ajber/synapse-db.git
+git clone https://github.com/aaronberkhoff/synapse-db.git
 cd synapse-db
 ./scripts/setup.sh
 ```
@@ -33,7 +33,7 @@ If the automated script doesn't work or you prefer manual setup:
 
 2. **Clone the repository**:
    ```bash
-   git clone https://github.com/ajber/synapse-db.git
+   git clone https://github.com/aaronberkhoff/synapse-db.git
    cd synapse-db
    ```
 

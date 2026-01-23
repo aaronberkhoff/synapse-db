@@ -10,7 +10,7 @@ Synapse DB has three types of documentation:
 
 **Purpose**: Comprehensive user-facing documentation
 **Technology**: [mdBook](https://rust-lang.github.io/mdBook/)
-**Output**: Static website at `https://ajber.github.io/synapse-db`
+**Output**: Static website at `https://aaronberkhoff.github.io/synapse-db`
 
 #### Building
 
@@ -306,9 +306,9 @@ cargo doc --open
 
 ### Online
 
-- **User Guide**: https://ajber.github.io/synapse-db
-- **API Docs**: https://ajber.github.io/synapse-db/api-docs/
-- **Source**: https://github.com/ajber/synapse-db
+- **User Guide**: https://aaronberkhoff.github.io/synapse-db
+- **API Docs**: https://aaronberkhoff.github.io/synapse-db/api-docs/
+- **Source**: https://github.com/aaronberkhoff/synapse-db
 
 ## Troubleshooting
 
@@ -365,7 +365,7 @@ git-cliff --output CHANGELOG.md
 - Check this document
 - See [book/README.md](./book/README.md) for mdBook specifics
 - See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines
-- Open an issue on [GitHub](https://github.com/ajber/synapse-db/issues)
+- Open an issue on [GitHub](https://github.com/aaronberkhoff/synapse-db/issues)
 
 ---
 

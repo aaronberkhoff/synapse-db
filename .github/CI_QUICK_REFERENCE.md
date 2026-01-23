@@ -130,12 +130,12 @@ cargo build --release
 ## 📊 Monitoring
 
 ### View Workflow Status
-- **Dashboard**: https://github.com/ajber/synapse-db/actions
+- **Dashboard**: https://github.com/aaronberkhoff/synapse-db/actions
 - **Badges**: Check README badges
 - **Notifications**: Watch repo for alerts
 
 ### Code Coverage
-- **Codecov**: https://codecov.io/gh/ajber/synapse-db
+- **Codecov**: https://codecov.io/gh/aaronberkhoff/synapse-db
 - **Target**: >80% coverage
 
 ### Dependencies

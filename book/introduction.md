@@ -1,7 +1,7 @@
 # Synapse DB
 
-![CI](https://github.com/ajber/synapse-db/workflows/CI/badge.svg)
-![Release](https://github.com/ajber/synapse-db/workflows/Release/badge.svg)
+![CI](https://github.com/aaronberkhoff/synapse-db/workflows/CI/badge.svg)
+![Release](https://github.com/aaronberkhoff/synapse-db/workflows/Release/badge.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 **A high-performance database implementation written in Rust**
@@ -94,13 +94,13 @@ Rust provides unique advantages for database systems:
 ## Getting Help
 
 - 📖 **Documentation**: You're reading it!
-- 🐛 **Issues**: [GitHub Issues](https://github.com/ajber/synapse-db/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/ajber/synapse-db/discussions)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/aaronberkhoff/synapse-db/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/aaronberkhoff/synapse-db/discussions)
 - 📝 **FAQ**: Check our [FAQ](./faq.md) for common questions
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/ajber/synapse-db/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/aaronberkhoff/synapse-db/blob/main/LICENSE) file for details.
 
 ## Contributing
 

@@ -284,7 +284,7 @@ rm -rf synapse-db
 - **Development Questions**: See [CONTRIBUTING.md](CONTRIBUTING.md)
 - **CI/CD**: See [.github/WORKFLOWS.md](.github/WORKFLOWS.md)
 - **Git Hooks**: See [.github/HOOKS.md](.github/HOOKS.md)
-- **General**: Open an [issue](https://github.com/ajber/synapse-db/issues)
+- **General**: Open an [issue](https://github.com/aaronberkhoff/synapse-db/issues)
 
 ## Next Steps
 
@@ -294,7 +294,7 @@ After setup:
 2. Check [book/README.md](book/README.md) - Documentation guide
 3. Review [DOCUMENTATION.md](DOCUMENTATION.md) - Documentation system
 4. Explore [examples/](examples/) - Example code
-5. Join discussions on [GitHub](https://github.com/ajber/synapse-db/discussions)
+5. Join discussions on [GitHub](https://github.com/aaronberkhoff/synapse-db/discussions)
 
 ---
 

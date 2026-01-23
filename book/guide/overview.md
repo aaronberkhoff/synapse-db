@@ -159,4 +159,4 @@ Dive deeper into specific components:
 
 - [FAQ](../faq.md) - Common questions
 - [API Reference](../api/overview.md) - Detailed API docs
-- [GitHub Issues](https://github.com/ajber/synapse-db/issues) - Report bugs
+- [GitHub Issues](https://github.com/aaronberkhoff/synapse-db/issues) - Report bugs

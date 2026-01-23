@@ -360,8 +360,8 @@ Ensure you're using Rust 1.70.0 or later.
 ## Getting Help
 
 - **[FAQ](../faq.md)** - Common questions
-- **[GitHub Issues](https://github.com/ajber/synapse-db/issues)** - Report bugs
-- **[Discussions](https://github.com/ajber/synapse-db/discussions)** - Ask questions
+- **[GitHub Issues](https://github.com/aaronberkhoff/synapse-db/issues)** - Report bugs
+- **[Discussions](https://github.com/aaronberkhoff/synapse-db/discussions)** - Ask questions
 
 ---
 

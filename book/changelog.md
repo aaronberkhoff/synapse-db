@@ -120,5 +120,5 @@ git cliff --output CHANGELOG.md
 
 ## Version Links
 
-[Unreleased]: https://github.com/ajber/synapse-db/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/ajber/synapse-db/releases/tag/v0.1.0
+[Unreleased]: https://github.com/aaronberkhoff/synapse-db/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/aaronberkhoff/synapse-db/releases/tag/v0.1.0

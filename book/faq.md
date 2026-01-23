@@ -23,7 +23,7 @@ Not yet. Synapse DB is currently in early development. Core features are being i
 
 ### What license is Synapse DB under?
 
-MIT License. See the [LICENSE](https://github.com/ajber/synapse-db/blob/main/LICENSE) file for details.
+MIT License. See the [LICENSE](https://github.com/aaronberkhoff/synapse-db/blob/main/LICENSE) file for details.
 
 ## Installation & Setup
 
@@ -120,19 +120,19 @@ See the [Contributing Guide](./development/contributing.md) for details on how t
 
 ### Where is the source code?
 
-GitHub: [https://github.com/ajber/synapse-db](https://github.com/ajber/synapse-db)
+GitHub: [https://github.com/aaronberkhoff/synapse-db](https://github.com/aaronberkhoff/synapse-db)
 
 ### How do I report bugs?
 
-Open an issue on [GitHub Issues](https://github.com/ajber/synapse-db/issues).
+Open an issue on [GitHub Issues](https://github.com/aaronberkhoff/synapse-db/issues).
 
 ### How do I request features?
 
-Open a feature request on [GitHub Issues](https://github.com/ajber/synapse-db/issues) with the "enhancement" label.
+Open a feature request on [GitHub Issues](https://github.com/aaronberkhoff/synapse-db/issues) with the "enhancement" label.
 
 ### Can I see the roadmap?
 
-Check [GitHub Milestones](https://github.com/ajber/synapse-db/milestones) and the [Changelog](./changelog.md).
+Check [GitHub Milestones](https://github.com/aaronberkhoff/synapse-db/milestones) and the [Changelog](./changelog.md).
 
 ## Troubleshooting
 
@@ -197,8 +197,8 @@ Synapse DB is not designed to be compatible with existing database systems. It's
 
 ### Where can I ask questions?
 
-- [GitHub Discussions](https://github.com/ajber/synapse-db/discussions)
-- [GitHub Issues](https://github.com/ajber/synapse-db/issues)
+- [GitHub Discussions](https://github.com/aaronberkhoff/synapse-db/discussions)
+- [GitHub Issues](https://github.com/aaronberkhoff/synapse-db/issues)
 - This FAQ
 
 ### Is there a community chat?
@@ -207,9 +207,9 @@ Not yet. We're focusing on building core features first.
 
 ### How do I stay updated?
 
-- Watch the [GitHub repository](https://github.com/ajber/synapse-db)
+- Watch the [GitHub repository](https://github.com/aaronberkhoff/synapse-db)
 - Check the [Changelog](./changelog.md)
-- Follow [GitHub Releases](https://github.com/ajber/synapse-db/releases)
+- Follow [GitHub Releases](https://github.com/aaronberkhoff/synapse-db/releases)
 
 ## Miscellaneous
 
@@ -227,8 +227,8 @@ Yes, while in early development (< 1.0), breaking changes may occur. We follow [
 
 ### How can I sponsor the project?
 
-Sponsorship options are being set up. Check the [GitHub repository](https://github.com/ajber/synapse-db) for updates.
+Sponsorship options are being set up. Check the [GitHub repository](https://github.com/aaronberkhoff/synapse-db) for updates.
 
 ---
 
-**Didn't find your answer?** [Open an issue](https://github.com/ajber/synapse-db/issues/new) or start a [discussion](https://github.com/ajber/synapse-db/discussions/new).
+**Didn't find your answer?** [Open an issue](https://github.com/aaronberkhoff/synapse-db/issues/new) or start a [discussion](https://github.com/aaronberkhoff/synapse-db/discussions/new).
