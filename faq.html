@@ -1,0 +1,390 @@
+<!DOCTYPE HTML>
+<html lang="en" class="navy" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>FAQ - Synapse DB Documentation</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="A high-performance database implementation written in Rust">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">Getting Started</li><li class="chapter-item expanded "><a href="getting-started/installation.html"><strong aria-hidden="true">1.</strong> Installation</a></li><li class="chapter-item expanded "><a href="getting-started/quick-start.html"><strong aria-hidden="true">2.</strong> Quick Start</a></li><li class="chapter-item expanded "><a href="getting-started/configuration.html"><strong aria-hidden="true">3.</strong> Configuration</a></li><li class="chapter-item expanded affix "><li class="part-title">User Guide</li><li class="chapter-item expanded "><a href="guide/overview.html"><strong aria-hidden="true">4.</strong> Overview</a></li><li class="chapter-item expanded "><a href="guide/storage.html"><strong aria-hidden="true">5.</strong> Storage Layer</a></li><li class="chapter-item expanded "><a href="guide/query-engine.html"><strong aria-hidden="true">6.</strong> Query Engine</a></li><li class="chapter-item expanded "><a href="guide/examples.html"><strong aria-hidden="true">7.</strong> Examples</a></li><li class="chapter-item expanded "><a href="guide/best-practices.html"><strong aria-hidden="true">8.</strong> Best Practices</a></li><li class="chapter-item expanded affix "><li class="part-title">API Reference</li><li class="chapter-item expanded "><a href="api/overview.html"><strong aria-hidden="true">9.</strong> Overview</a></li><li class="chapter-item expanded "><a href="api/storage.html"><strong aria-hidden="true">10.</strong> Storage Module</a></li><li class="chapter-item expanded "><a href="api/query.html"><strong aria-hidden="true">11.</strong> Query Module</a></li><li class="chapter-item expanded affix "><li class="part-title">Python Bindings</li><li class="chapter-item expanded "><a href="python/overview.html"><strong aria-hidden="true">12.</strong> Overview</a></li><li class="chapter-item expanded "><a href="python/installation.html"><strong aria-hidden="true">13.</strong> Installation</a></li><li class="chapter-item expanded "><a href="python/usage.html"><strong aria-hidden="true">14.</strong> Usage Guide</a></li><li class="chapter-item expanded "><a href="python/api.html"><strong aria-hidden="true">15.</strong> API Reference</a></li><li class="chapter-item expanded "><a href="python/testing.html"><strong aria-hidden="true">16.</strong> Testing</a></li><li class="chapter-item expanded affix "><li class="part-title">Development</li><li class="chapter-item expanded "><a href="development/contributing.html"><strong aria-hidden="true">17.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="development/architecture.html"><strong aria-hidden="true">18.</strong> Architecture</a></li><li class="chapter-item expanded "><a href="development/testing.html"><strong aria-hidden="true">19.</strong> Testing</a></li><li class="chapter-item expanded "><a href="development/release.html"><strong aria-hidden="true">20.</strong> Release Process</a></li><li class="chapter-item expanded "><a href="development/cicd.html"><strong aria-hidden="true">21.</strong> CI/CD Pipeline</a></li><li class="chapter-item expanded "><a href="development/hooks.html"><strong aria-hidden="true">22.</strong> Git Hooks</a></li><li class="chapter-item expanded affix "><li class="part-title">Appendix</li><li class="chapter-item expanded "><a href="changelog.html"><strong aria-hidden="true">23.</strong> Changelog</a></li><li class="chapter-item expanded "><a href="faq.html" class="active"><strong aria-hidden="true">24.</strong> FAQ</a></li><li class="chapter-item expanded "><a href="glossary.html"><strong aria-hidden="true">25.</strong> Glossary</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Synapse DB Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/aaronberkhoff/synapse-db" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/aaronberkhoff/synapse-db/edit/main/book/book/faq.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="frequently-asked-questions-faq"><a class="header" href="#frequently-asked-questions-faq">Frequently Asked Questions (FAQ)</a></h1>
+<p>Common questions and answers about Synapse DB.</p>
+<h2 id="general"><a class="header" href="#general">General</a></h2>
+<h3 id="what-is-synapse-db"><a class="header" href="#what-is-synapse-db">What is Synapse DB?</a></h3>
+<p>Synapse DB is a high-performance database implementation written in Rust. It’s designed to provide safety, performance, and reliability through Rust’s type system and ownership model.</p>
+<h3 id="why-rust"><a class="header" href="#why-rust">Why Rust?</a></h3>
+<p>Rust provides unique advantages for database systems:</p>
+<ul>
+<li><strong>Memory safety</strong> without garbage collection</li>
+<li><strong>Zero-cost abstractions</strong> for high performance</li>
+<li><strong>Fearless concurrency</strong> with compile-time guarantees</li>
+<li><strong>Modern tooling</strong> and excellent package manager</li>
+</ul>
+<h3 id="is-synapse-db-production-ready"><a class="header" href="#is-synapse-db-production-ready">Is Synapse DB production-ready?</a></h3>
+<p>Not yet. Synapse DB is currently in early development. Core features are being implemented. Check the <a href="./changelog.html">Changelog</a> for current status.</p>
+<h3 id="what-license-is-synapse-db-under"><a class="header" href="#what-license-is-synapse-db-under">What license is Synapse DB under?</a></h3>
+<p>MIT License. See the <a href="https://github.com/aaronberkhoff/synapse-db/blob/main/LICENSE">LICENSE</a> file for details.</p>
+<h2 id="installation--setup"><a class="header" href="#installation--setup">Installation &amp; Setup</a></h2>
+<h3 id="what-are-the-system-requirements"><a class="header" href="#what-are-the-system-requirements">What are the system requirements?</a></h3>
+<ul>
+<li>Rust 1.70.0 or later</li>
+<li>Cargo (bundled with Rust)</li>
+<li>Linux, macOS, or Windows</li>
+<li>Minimum 512MB RAM</li>
+</ul>
+<h3 id="how-do-i-install-synapse-db"><a class="header" href="#how-do-i-install-synapse-db">How do I install Synapse DB?</a></h3>
+<p>See the <a href="./getting-started/installation.html">Installation Guide</a> for detailed instructions.</p>
+<h3 id="do-i-need-to-install-anything-besides-rust"><a class="header" href="#do-i-need-to-install-anything-besides-rust">Do I need to install anything besides Rust?</a></h3>
+<p>No. Cargo will handle all dependencies automatically.</p>
+<h3 id="can-i-use-synapse-db-without-rust"><a class="header" href="#can-i-use-synapse-db-without-rust">Can I use Synapse DB without Rust?</a></h3>
+<p>Currently, Synapse DB is a Rust library. Language bindings (Python, JavaScript, etc.) are planned for future releases.</p>
+<h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
+<h3 id="how-do-i-create-a-database"><a class="header" href="#how-do-i-create-a-database">How do I create a database?</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use synapse_db::storage::Storage;
+
+let storage = Storage::new();
+<span class="boring">}</span></code></pre></pre>
+<h3 id="how-do-i-execute-queries"><a class="header" href="#how-do-i-execute-queries">How do I execute queries?</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>use synapse_db::query::QueryEngine;
+
+let engine = QueryEngine::new();
+let result = engine.execute("SELECT * FROM users");
+<span class="boring">}</span></code></pre></pre>
+<blockquote>
+<p><strong>Note</strong>: Query execution is currently under development.</p>
+</blockquote>
+<h3 id="can-i-use-synapse-db-in-async-contexts"><a class="header" href="#can-i-use-synapse-db-in-async-contexts">Can I use Synapse DB in async contexts?</a></h3>
+<p>Async support is planned but not yet implemented. Currently, all operations are synchronous.</p>
+<h3 id="how-do-i-handle-errors"><a class="header" href="#how-do-i-handle-errors">How do I handle errors?</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>match engine.execute("SELECT * FROM users") {
+    Ok(result) =&gt; println!("Success: {:?}", result),
+    Err(e) =&gt; eprintln!("Error: {}", e),
+}
+<span class="boring">}</span></code></pre></pre>
+<h2 id="performance"><a class="header" href="#performance">Performance</a></h2>
+<h3 id="how-fast-is-synapse-db"><a class="header" href="#how-fast-is-synapse-db">How fast is Synapse DB?</a></h3>
+<p>Performance benchmarks will be published as features are implemented. Early results show promising performance due to Rust’s zero-cost abstractions.</p>
+<h3 id="can-i-configure-memory-usage"><a class="header" href="#can-i-configure-memory-usage">Can I configure memory usage?</a></h3>
+<p>Configuration options are planned for future releases. See <a href="./getting-started/configuration.html">Configuration</a>.</p>
+<h3 id="does-synapse-db-support-concurrent-access"><a class="header" href="#does-synapse-db-support-concurrent-access">Does Synapse DB support concurrent access?</a></h3>
+<p>Concurrent access support is under development and will be available in future releases.</p>
+<h2 id="features"><a class="header" href="#features">Features</a></h2>
+<h3 id="what-sql-features-are-supported"><a class="header" href="#what-sql-features-are-supported">What SQL features are supported?</a></h3>
+<p>SQL parsing and execution are currently under development. Check the <a href="#roadmap">Roadmap</a> for planned features.</p>
+<h3 id="does-it-support-transactions"><a class="header" href="#does-it-support-transactions">Does it support transactions?</a></h3>
+<p>Transaction support is planned but not yet implemented.</p>
+<h3 id="can-i-create-indexes"><a class="header" href="#can-i-create-indexes">Can I create indexes?</a></h3>
+<p>Index support is planned for future releases.</p>
+<h3 id="is-there-a-query-optimizer"><a class="header" href="#is-there-a-query-optimizer">Is there a query optimizer?</a></h3>
+<p>Query optimization is planned as part of the query engine implementation.</p>
+<h2 id="development"><a class="header" href="#development">Development</a></h2>
+<h3 id="how-can-i-contribute"><a class="header" href="#how-can-i-contribute">How can I contribute?</a></h3>
+<p>See the <a href="./development/contributing.html">Contributing Guide</a> for details on how to contribute.</p>
+<h3 id="where-is-the-source-code"><a class="header" href="#where-is-the-source-code">Where is the source code?</a></h3>
+<p>GitHub: <a href="https://github.com/aaronberkhoff/synapse-db">https://github.com/aaronberkhoff/synapse-db</a></p>
+<h3 id="how-do-i-report-bugs"><a class="header" href="#how-do-i-report-bugs">How do I report bugs?</a></h3>
+<p>Open an issue on <a href="https://github.com/aaronberkhoff/synapse-db/issues">GitHub Issues</a>.</p>
+<h3 id="how-do-i-request-features"><a class="header" href="#how-do-i-request-features">How do I request features?</a></h3>
+<p>Open a feature request on <a href="https://github.com/aaronberkhoff/synapse-db/issues">GitHub Issues</a> with the “enhancement” label.</p>
+<h3 id="can-i-see-the-roadmap"><a class="header" href="#can-i-see-the-roadmap">Can I see the roadmap?</a></h3>
+<p>Check <a href="https://github.com/aaronberkhoff/synapse-db/milestones">GitHub Milestones</a> and the <a href="./changelog.html">Changelog</a>.</p>
+<h2 id="troubleshooting"><a class="header" href="#troubleshooting">Troubleshooting</a></h2>
+<h3 id="build-fails-with-linker-error"><a class="header" href="#build-fails-with-linker-error">Build fails with “linker error”</a></h3>
+<p>Install build tools:</p>
+<pre><code class="language-bash"># Ubuntu/Debian
+sudo apt-get install build-essential
+
+# macOS
+xcode-select --install
+
+# Windows
+# Install Visual Studio with C++ tools
+</code></pre>
+<h3 id="cargo-command-not-found"><a class="header" href="#cargo-command-not-found">“cargo: command not found”</a></h3>
+<p>Add Cargo to your PATH:</p>
+<pre><code class="language-bash">source $HOME/.cargo/env
+</code></pre>
+<h3 id="tests-are-failing"><a class="header" href="#tests-are-failing">Tests are failing</a></h3>
+<p>Ensure you have the latest stable Rust:</p>
+<pre><code class="language-bash">rustup update stable
+</code></pre>
+<h3 id="documentation-build-fails"><a class="header" href="#documentation-build-fails">Documentation build fails</a></h3>
+<p>Install mdBook:</p>
+<pre><code class="language-bash">cargo install mdbook
+</code></pre>
+<h2 id="comparison"><a class="header" href="#comparison">Comparison</a></h2>
+<h3 id="how-does-synapse-db-compare-to-sqlite"><a class="header" href="#how-does-synapse-db-compare-to-sqlite">How does Synapse DB compare to SQLite?</a></h3>
+<p>Synapse DB is in early development. SQLite is a mature, production-ready database. Synapse DB aims to provide similar ease of use with the added safety guarantees of Rust.</p>
+<h3 id="how-does-it-compare-to-other-rust-databases"><a class="header" href="#how-does-it-compare-to-other-rust-databases">How does it compare to other Rust databases?</a></h3>
+<p>Synapse DB is designed as a learning project and reference implementation. For production use, consider mature alternatives like:</p>
+<ul>
+<li><a href="https://github.com/spacejam/sled">sled</a> - Embedded database</li>
+<li><a href="https://github.com/rust-rocksdb/rust-rocksdb">RocksDB</a> - Key-value store</li>
+<li><a href="https://github.com/tikv/tikv">TiKV</a> - Distributed database</li>
+</ul>
+<h3 id="is-it-compatible-with-postgresqlmysql"><a class="header" href="#is-it-compatible-with-postgresqlmysql">Is it compatible with PostgreSQL/MySQL?</a></h3>
+<p>Synapse DB is not designed to be compatible with existing database systems. It’s a standalone implementation.</p>
+<h2 id="getting-help"><a class="header" href="#getting-help">Getting Help</a></h2>
+<h3 id="where-can-i-ask-questions"><a class="header" href="#where-can-i-ask-questions">Where can I ask questions?</a></h3>
+<ul>
+<li><a href="https://github.com/aaronberkhoff/synapse-db/discussions">GitHub Discussions</a></li>
+<li><a href="https://github.com/aaronberkhoff/synapse-db/issues">GitHub Issues</a></li>
+<li>This FAQ</li>
+</ul>
+<h3 id="is-there-a-community-chat"><a class="header" href="#is-there-a-community-chat">Is there a community chat?</a></h3>
+<p>Not yet. We’re focusing on building core features first.</p>
+<h3 id="how-do-i-stay-updated"><a class="header" href="#how-do-i-stay-updated">How do I stay updated?</a></h3>
+<ul>
+<li>Watch the <a href="https://github.com/aaronberkhoff/synapse-db">GitHub repository</a></li>
+<li>Check the <a href="./changelog.html">Changelog</a></li>
+<li>Follow <a href="https://github.com/aaronberkhoff/synapse-db/releases">GitHub Releases</a></li>
+</ul>
+<h2 id="miscellaneous"><a class="header" href="#miscellaneous">Miscellaneous</a></h2>
+<h3 id="why-synapse-db"><a class="header" href="#why-synapse-db">Why “Synapse DB”?</a></h3>
+<p>The name reflects the goal of creating fast, efficient connections between data, similar to neural synapses.</p>
+<h3 id="can-i-use-this-in-commercial-projects"><a class="header" href="#can-i-use-this-in-commercial-projects">Can I use this in commercial projects?</a></h3>
+<p>Yes! The MIT license allows commercial use.</p>
+<h3 id="will-there-be-breaking-changes"><a class="header" href="#will-there-be-breaking-changes">Will there be breaking changes?</a></h3>
+<p>Yes, while in early development (&lt; 1.0), breaking changes may occur. We follow <a href="https://semver.org/">Semantic Versioning</a>.</p>
+<h3 id="how-can-i-sponsor-the-project"><a class="header" href="#how-can-i-sponsor-the-project">How can I sponsor the project?</a></h3>
+<p>Sponsorship options are being set up. Check the <a href="https://github.com/aaronberkhoff/synapse-db">GitHub repository</a> for updates.</p>
+<hr />
+<p><strong>Didn’t find your answer?</strong> <a href="https://github.com/aaronberkhoff/synapse-db/issues/new">Open an issue</a> or start a <a href="https://github.com/aaronberkhoff/synapse-db/discussions/new">discussion</a>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="changelog.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="glossary.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="changelog.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="glossary.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="ace.js"></script>
+        <script src="editor.js"></script>
+        <script src="mode-rust.js"></script>
+        <script src="theme-dawn.js"></script>
+        <script src="theme-tomorrow_night.js"></script>
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
