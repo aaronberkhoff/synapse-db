@@ -22,6 +22,14 @@
 - [Storage Module](./api/storage.md)
 - [Query Module](./api/query.md)
 
+# Python Bindings
+
+- [Overview](./python/overview.md)
+- [Installation](./python/installation.md)
+- [Usage Guide](./python/usage.md)
+- [API Reference](./python/api.md)
+- [Testing](./python/testing.md)
+
 # Development
 
 - [Contributing](./development/contributing.md)

@@ -13,6 +13,10 @@ A high-performance database implementation written in Rust.
 - Query processing engine
 - Type-safe implementation
 
+## Planned Features
+
+- [ ] YAML serialization support (`serde_yaml`)
+
 ## Quick Start
 
 ### For New Developers

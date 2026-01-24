@@ -8,7 +8,24 @@ description = "A database implementation in Rust"
 repository = "https://github.com/yourusername/synapse-db"
 readme = "README.md"
 
+[lib]
+name = "synapse_db"
+# cdylib needed for Python extension, rlib for Rust library usage
+crate-type = ["cdylib", "rlib"]
+
+[[bin]]
+name = "stub_gen"
+doc = false
+required-features = ["python"]
+
 [dependencies]
+thiserror = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Python bindings (optional)
+pyo3 = { version = "0.22", features = ["extension-module"], optional = true }
+pyo3-stub-gen = { version = "0.6", optional = true }
 
 [dev-dependencies]
 
@@ -16,3 +33,8 @@ readme = "README.md"
 opt-level = 3
 lto = true
 codegen-units = 1
+
+[features]
+default = []
+# Enable Python bindings
+python = ["dep:pyo3", "dep:pyo3-stub-gen"]

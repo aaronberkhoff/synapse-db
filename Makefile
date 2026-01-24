@@ -1,7 +1,8 @@
 # Synapse DB Makefile
 # Provides convenient commands for development tasks
 
-.PHONY: help setup build test clean fmt lint doc check run release install-hooks pre-push changelog serve watch audit outdated all
+.PHONY: help setup build test clean fmt lint doc check run release install-hooks pre-push changelog serve watch audit outdated all \
+        python-build python-dev python-test python-stubs python-typecheck python-wheel python-clean python-all
 
 # Default target - show help
 .DEFAULT_GOAL := help
@@ -48,7 +49,9 @@ clean: ## Remove build artifacts
 	@rm -rf target/book
 	@echo "$(GREEN)✓ Clean complete$(NC)"
 
-all: fmt lint test build doc ## Run all checks and build
+all: fmt lint test build doc ## Run all Rust checks and build
+
+all-with-python: all python-all ## Run all Rust and Python checks
 
 ##@ Testing
 
@@ -213,22 +216,106 @@ release-prep: changelog ## Prepare for release (update changelog)
 	@echo "  3. make tag VERSION=x.y.z"
 	@echo "  4. git push origin vx.y.z"
 
+##@ Python Bindings
+
+python-build: ## Build Rust with Python feature enabled
+	@echo "$(BLUE)Building with Python bindings...$(NC)"
+	@cargo build --features python
+	@echo "$(GREEN)✓ Python build complete$(NC)"
+
+python-dev: ## Install Python package in development mode
+	@echo "$(BLUE)Installing Python package (dev mode)...$(NC)"
+	@maturin develop
+	@echo "$(GREEN)✓ Python package installed$(NC)"
+
+python-dev-release: ## Install Python package in release mode
+	@echo "$(BLUE)Installing Python package (release mode)...$(NC)"
+	@maturin develop --release
+	@echo "$(GREEN)✓ Python package installed (release)$(NC)"
+
+python-test: python-dev ## Run Python tests
+	@echo "$(BLUE)Running Python tests...$(NC)"
+	@pytest python/tests/ -v
+	@echo "$(GREEN)✓ Python tests passed$(NC)"
+
+python-stubs: ## Generate Python type stubs from Rust
+	@echo "$(BLUE)Generating Python type stubs...$(NC)"
+	@./scripts/generate_stubs.sh
+	@echo "$(GREEN)✓ Type stubs generated$(NC)"
+
+python-typecheck: ## Run mypy type checking on Python code
+	@echo "$(BLUE)Running mypy type check...$(NC)"
+	@mypy python/tests/
+	@echo "$(GREEN)✓ Type check passed$(NC)"
+
+python-lint: ## Lint Python code with ruff
+	@echo "$(BLUE)Linting Python code...$(NC)"
+	@ruff check python/
+	@echo "$(GREEN)✓ Python lint passed$(NC)"
+
+python-lint-fix: ## Auto-fix Python linting issues
+	@echo "$(BLUE)Auto-fixing Python lint issues...$(NC)"
+	@ruff check python/ --fix
+	@echo "$(GREEN)✓ Python lint fixes applied$(NC)"
+
+python-fmt: ## Format Python code with ruff
+	@echo "$(BLUE)Formatting Python code...$(NC)"
+	@ruff format python/
+	@echo "$(GREEN)✓ Python code formatted$(NC)"
+
+python-wheel: ## Build Python wheel for distribution
+	@echo "$(BLUE)Building Python wheel...$(NC)"
+	@maturin build --release
+	@echo "$(GREEN)✓ Wheel built in target/wheels/$(NC)"
+
+python-wheel-all: ## Build wheels for all Python versions
+	@echo "$(BLUE)Building wheels for all Python versions...$(NC)"
+	@maturin build --release --find-interpreter
+	@echo "$(GREEN)✓ All wheels built$(NC)"
+
+python-clean: ## Clean Python build artifacts
+	@echo "$(BLUE)Cleaning Python artifacts...$(NC)"
+	@rm -rf python/synapse_db/*.so python/synapse_db/*.pyd
+	@rm -rf python/synapse_db/__pycache__ python/tests/__pycache__
+	@rm -rf .pytest_cache .mypy_cache .ruff_cache
+	@rm -rf dist/ *.egg-info/
+	@echo "$(GREEN)✓ Python clean complete$(NC)"
+
+python-all: python-stubs python-dev python-lint python-typecheck python-test ## Run all Python checks
+	@echo "$(GREEN)✓ All Python checks passed$(NC)"
+
+python-ci: python-stubs python-dev python-fmt python-lint python-typecheck python-test python-wheel ## Full Python CI pipeline
+	@echo "$(GREEN)✓ Python CI complete$(NC)"
+
+python-install-deps: ## Install Python development dependencies
+	@echo "$(BLUE)Installing Python dependencies...$(NC)"
+	@pip install maturin pytest pytest-cov mypy ruff
+	@echo "$(GREEN)✓ Python dependencies installed$(NC)"
+
 ##@ Information
 
 info: ## Show project information
 	@echo "$(BLUE)Project Information$(NC)"
 	@echo "Name:        Synapse DB"
-	@echo "Language:    Rust"
+	@echo "Language:    Rust + Python"
 	@echo "Version:     $$(grep '^version' Cargo.toml | head -1 | cut -d'"' -f2)"
+	@echo ""
+	@echo "$(BLUE)Rust Toolchain$(NC)"
 	@echo "Rust:        $$(rustc --version)"
 	@echo "Cargo:       $$(cargo --version)"
 	@echo ""
+	@echo "$(BLUE)Python Toolchain$(NC)"
+	@echo "Python:      $$(python --version 2>/dev/null || echo 'not found')"
+	@echo "Maturin:     $$(maturin --version 2>/dev/null || echo 'not found')"
+	@echo "Pytest:      $$(pytest --version 2>/dev/null | head -1 || echo 'not found')"
+	@echo ""
 	@echo "$(BLUE)Project Structure$(NC)"
-	@echo "Source:      src/"
-	@echo "Tests:       tests/"
+	@echo "Rust src:    src/"
+	@echo "Rust tests:  tests/"
+	@echo "Python pkg:  python/synapse_db/"
+	@echo "Python tests: python/tests/"
 	@echo "Docs:        book/"
 	@echo "Scripts:     scripts/"
-	@echo "Examples:    examples/"
 
 status: ## Show git status
 	@git status
