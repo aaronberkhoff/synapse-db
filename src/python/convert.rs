@@ -2,7 +2,7 @@
 //!
 //! This module provides functions to convert between `MetaValue` and Python objects.
 
-use crate::node::MetaValue;
+use crate::meta_data::MetaValue;
 use pyo3::prelude::*;
 use pyo3::types::{PyDict, PyFloat, PyInt, PyList, PyString};
 use std::collections::HashMap;

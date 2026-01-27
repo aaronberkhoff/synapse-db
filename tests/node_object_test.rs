@@ -4,7 +4,8 @@
 //! and metadata handling functionality.
 
 use std::collections::HashMap;
-use synapse_db::node::{MetaValue, Node};
+use synapse_db::meta_data::MetaValue;
+use synapse_db::node::Node;
 
 /// Tests that a node without a parent is initialized correctly.
 #[test]

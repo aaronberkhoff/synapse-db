@@ -5,6 +5,7 @@
 // Allow useless_conversion lint for PyO3's automatic error conversions via `?` operator
 #![allow(clippy::useless_conversion)]
 
+use crate::meta_data::HasMetadata;
 use crate::node::Node;
 use pyo3::prelude::*;
 use pyo3_stub_gen::derive::{gen_stub_pyclass, gen_stub_pymethods};

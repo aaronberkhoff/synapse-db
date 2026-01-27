@@ -1,5 +1,6 @@
 // set_meta and get_meta tests
-use synapse_db::node::{MetaValue, Node};
+use synapse_db::meta_data::{HasMetadata, MetaValue};
+use synapse_db::node::Node;
 
 #[test]
 fn test_set_meta_on_empty_map() {

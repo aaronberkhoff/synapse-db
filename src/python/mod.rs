@@ -7,33 +7,41 @@
 //!
 //! - `convert` - Type conversion utilities between Rust and Python
 //! - `node` - Python wrapper for the `Node` struct
+//! - `edge` - Python wrapper for the `Edge` struct
 //!
 //! # Example
 //!
 //! ```python
 //! import synapse_db
 //!
-//! # Create a node
-//! node = synapse_db.Node(1, "root")
+//! # Create nodes
+//! node1 = synapse_db.Node(1, "alice")
+//! node2 = synapse_db.Node(2, "bob")
+//!
+//! # Create an edge (directed: alice -> bob)
+//! edge = synapse_db.Edge(1, 1, 2, "follows")
+//!
+//! # Create a bidirectional edge
+//! friendship = synapse_db.Edge(2, 1, 2, "friends", bidirectional=True)
+//!
+//! # Check traversal
+//! edge.allows_traversal(1, 2)  # True
+//! edge.allows_traversal(2, 1)  # False (directed edge)
 //!
 //! # Set metadata
-//! node.set_meta("version", 1)
-//! node.set_meta("tags", ["database", "rust"])
-//!
-//! # Get metadata
-//! version = node.get_meta("version")
-//!
-//! # Serialize to JSON
-//! json_str = node.to_json()
+//! node1.set_meta("version", 1)
+//! edge.set_meta("weight", 1.5)
 //! ```
 
 mod convert;
+mod edge;
 mod node;
 
 use pyo3::prelude::*;
 use pyo3_stub_gen::define_stub_info_gatherer;
 use pyo3_stub_gen::derive::gen_stub_pyfunction;
 
+pub use edge::{PyEdge, PyEdgeDirection};
 pub use node::PyNode;
 
 /// Get the version of the synapse_db library.
@@ -57,6 +65,8 @@ fn get_version() -> &'static str {
 ///
 /// Classes:
 ///     Node: A node in the database hierarchy.
+///     Edge: An edge connecting two nodes (with canonical ordering).
+///     EdgeDirection: Direction enum (AtoB, BtoA, Bidirectional).
 ///
 /// Functions:
 ///     get_version(): Get the library version.
@@ -64,12 +74,14 @@ fn get_version() -> &'static str {
 /// Example:
 ///     >>> import synapse_db
 ///     >>> node = synapse_db.Node(1, "root")
-///     >>> node.set_meta("version", 1)
-///     >>> print(node.get_meta("version"))
-///     1
+///     >>> edge = synapse_db.Edge(1, 2, 5, "follows")
+///     >>> edge.allows_traversal(2, 5)
+///     True
 #[pymodule]
 fn synapse_db(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<PyNode>()?;
+    m.add_class::<PyEdge>()?;
+    m.add_class::<PyEdgeDirection>()?;
     m.add_function(wrap_pyfunction!(get_version, m)?)?;
     Ok(())
 }

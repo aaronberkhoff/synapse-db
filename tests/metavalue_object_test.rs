@@ -4,7 +4,7 @@
 //! stored, and accessed correctly, including nested structures.
 
 use std::collections::HashMap;
-use synapse_db::node::MetaValue;
+use synapse_db::meta_data::MetaValue;
 
 /// Tests that `MetaValue::Int` correctly stores and retrieves an integer.
 #[test]
