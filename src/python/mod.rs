@@ -35,6 +35,7 @@
 
 mod convert;
 mod edge;
+mod graph;
 mod node;
 
 use pyo3::prelude::*;
@@ -42,6 +43,7 @@ use pyo3_stub_gen::define_stub_info_gatherer;
 use pyo3_stub_gen::derive::gen_stub_pyfunction;
 
 pub use edge::{PyEdge, PyEdgeDirection};
+pub use graph::PyGraph;
 pub use node::PyNode;
 
 /// Get the version of the synapse_db library.
@@ -67,6 +69,7 @@ fn get_version() -> &'static str {
 ///     Node: A node in the database hierarchy.
 ///     Edge: An edge connecting two nodes (with canonical ordering).
 ///     EdgeDirection: Direction enum (AtoB, BtoA, Bidirectional).
+///     Graph: A graph containing nodes and edges with adjacency indexing.
 ///
 /// Functions:
 ///     get_version(): Get the library version.
@@ -82,6 +85,7 @@ fn synapse_db(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<PyNode>()?;
     m.add_class::<PyEdge>()?;
     m.add_class::<PyEdgeDirection>()?;
+    m.add_class::<PyGraph>()?;
     m.add_function(wrap_pyfunction!(get_version, m)?)?;
     Ok(())
 }

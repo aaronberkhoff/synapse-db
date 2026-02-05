@@ -74,6 +74,13 @@ pub struct PyEdge {
     inner: Edge,
 }
 
+impl PyEdge {
+    /// Creates a PyEdge from an existing Edge.
+    pub(crate) fn from_inner(edge: Edge) -> Self {
+        PyEdge { inner: edge }
+    }
+}
+
 #[gen_stub_pymethods]
 #[pymethods]
 impl PyEdge {

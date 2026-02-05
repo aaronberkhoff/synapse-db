@@ -28,6 +28,13 @@ pub struct PyNode {
     inner: Node,
 }
 
+impl PyNode {
+    /// Creates a PyNode from an existing Node.
+    pub(crate) fn from_inner(node: Node) -> Self {
+        PyNode { inner: node }
+    }
+}
+
 #[gen_stub_pymethods]
 #[pymethods]
 impl PyNode {

@@ -26,6 +26,7 @@
 //! ```
 
 pub mod edge;
+pub mod graph;
 pub mod meta_data;
 pub mod node;
 
