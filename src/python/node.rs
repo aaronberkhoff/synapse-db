@@ -5,6 +5,7 @@
 // Allow useless_conversion lint for PyO3's automatic error conversions via `?` operator
 #![allow(clippy::useless_conversion)]
 
+use crate::meta_data::HasMetadata;
 use crate::node::Node;
 use pyo3::prelude::*;
 use pyo3_stub_gen::derive::{gen_stub_pyclass, gen_stub_pymethods};
@@ -25,6 +26,13 @@ use super::convert::{metavalue_to_py, py_to_metavalue};
 #[pyclass(name = "Node")]
 pub struct PyNode {
     inner: Node,
+}
+
+impl PyNode {
+    /// Creates a PyNode from an existing Node.
+    pub(crate) fn from_inner(node: Node) -> Self {
+        PyNode { inner: node }
+    }
 }
 
 #[gen_stub_pymethods]

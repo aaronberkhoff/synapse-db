@@ -10,7 +10,8 @@
 //! # Example
 //!
 //! ```
-//! use synapse_db::node::{Node, MetaValue};
+//! use synapse_db::meta_data::{HasMetadata, MetaValue};
+//! use synapse_db::node::Node;
 //!
 //! // Create a root node
 //! let mut root = Node::new(1, None, 0, "root", None);
@@ -24,6 +25,9 @@
 //! }
 //! ```
 
+pub mod edge;
+pub mod graph;
+pub mod meta_data;
 pub mod node;
 
 #[cfg(feature = "python")]
