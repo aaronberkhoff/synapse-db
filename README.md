@@ -200,6 +200,7 @@ This repository includes comprehensive documentation:
 | [.github/WORKFLOWS.md](.github/WORKFLOWS.md) | CI/CD workflows guide |
 | [.github/HOOKS.md](.github/HOOKS.md) | Git hooks documentation |
 | [scripts/README.md](scripts/README.md) | Development scripts guide |
+| [AI_DISCLAIMER.md](AI_DISCLAIMER.md) | AI usage disclosure |
 
 ## Contributing
 
